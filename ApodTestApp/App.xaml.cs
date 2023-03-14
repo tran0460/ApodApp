@@ -19,26 +19,26 @@ public partial class App : Application
     protected override void OnStart()
     {
         base.OnStart();
+        //TODO: add slide show delay
+        //TODO: add start and end dates chosen 
 
+        StartDate = Preferences.Default.Get("StartDate", DateTime.Now);
         UseHiDef = Preferences.Default.Get("UseHiDef", false);
         NumberOfRandomImages = Preferences.Default.Get("NumberOfRandomImages", 1);
 
-        // var start = Preferences.Default.Get("StartDate", DateTime.Now.ToBinary());
-        StartDate = Preferences.Default.Get("StartDate", DateTime.Now);
-        // StartDate = DateTime.FromBinary(start);
     }
 
     protected override void OnSleep()
     {
         base.OnSleep();
+        //TODO: add slide show delay
+        //TODO: add start and end dates chosen 
 
         Preferences.Default.Set("UseHiDef", UseHiDef);
         Preferences.Default.Set("NumberOfRandomImages", NumberOfRandomImages);
 
         var start = StartDate.ToBinary();
         Preferences.Default.Set("StartDate", start);
-
-        int x = 0;
 
     }
 }
