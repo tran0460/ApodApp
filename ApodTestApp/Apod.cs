@@ -161,6 +161,12 @@ namespace ApodTestApp
         {
             lastDate = lastDate.AddDays(-1);
             return await GetApodUriByDate(lastDate);
+        }        
+        
+        public async Task<Uri> GetNextUri()
+        {
+            lastDate = lastDate.AddDays(1);
+            return await GetApodUriByDate(lastDate);
         }
 
         private async Task<Uri> GetApodUriByDate(DateTime newDate)

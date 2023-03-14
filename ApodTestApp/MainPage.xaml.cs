@@ -51,7 +51,7 @@ public partial class MainPage : ContentPage
                 Title = apod.Date;
                 break;
             case SwipeDirection.Right:
-                var uri = await apod.GetApodUri();
+                var uri = await apod.GetNextUri();
                 TheImage.Source = uri;
                 ImageDescription = apod.Information;
                 Title = apod.Date;
