@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net.Http.Json;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace ApodTestApp
 {
@@ -36,6 +38,9 @@ namespace ApodTestApp
         private const string noImageMessage = "No Apod image for today";
         private const string noCopyright = "None";
         private const string dateParameter = "&date=";
+        private const string startDateParameter = "&start_date=";
+        private const string endDateParameter = "&end_date=";
+        private const string countParameter = "&count=";
         #endregion
 
         #region Properties
@@ -156,12 +161,35 @@ namespace ApodTestApp
                 $"\u00A9 {currentApodData.copyright}{Environment.NewLine}" +
                 $"{Environment.NewLine}Image Date: {currentApodData.date}";
         }
+
+        public async Task<Uri> GetNumberOfImages(int number)
+        {
+            var request = new Uri($"{baseUrl}{apiKey}{thumbsParameter}{countParameter}{number}");
+
+
+            var getData = await httpClient.GetFromJsonAsync<ApodData[]>(request);
+            foreach (var data in getData)
+            {
+                Debug.WriteLine($"Title: {data.title}");
+            }
+
+            if (getData.Length > 0)
+            {
+                return GetValidUri();
+            }
+            else
+            {
+                return new Uri($"{errorUrl}{LastError}");
+            }
+        }
+
         // get previous image
         public async Task<Uri> GetPreviousUri()
         {
             lastDate = lastDate.AddDays(-1);
             return await GetApodUriByDate(lastDate);
-        }        
+        }         
+      
         // get next image
         public async Task<Uri> GetNextUri()
         {

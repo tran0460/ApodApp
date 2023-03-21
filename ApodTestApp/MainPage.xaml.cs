@@ -14,7 +14,9 @@ public partial class MainPage : ContentPage
 
 		apod.GetApodUri(); // TODO - MOVE THIS
 
-        StartTimer(1);
+        //StartTimer(1);
+
+        apod.GetNumberOfImages(10);
 	}
 
     protected override async void OnNavigatedTo(NavigatedToEventArgs args)
