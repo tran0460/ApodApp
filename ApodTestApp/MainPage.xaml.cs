@@ -6,7 +6,7 @@ public partial class MainPage : ContentPage
 
 	public string ImageDescription { get; set; } = string.Empty;
 
-
+    IDispatcherTimer timer = null;
 
 	public MainPage()
 	{
@@ -14,7 +14,7 @@ public partial class MainPage : ContentPage
 
 		apod.GetApodUri(); // TODO - MOVE THIS
 
-
+        StartTimer(1);
 	}
 
     protected override async void OnNavigatedTo(NavigatedToEventArgs args)
@@ -57,6 +57,28 @@ public partial class MainPage : ContentPage
                 Title = apod.Date;
                 break;
         }
+    }
+
+    private void StartTimer(int seconds)
+    {
+        timer = Dispatcher.CreateTimer();
+        timer.Interval = TimeSpan.FromSeconds(seconds);
+
+        timer.Tick += async (_, _) =>
+        {
+            //TheImage.IsVisible = !TheImage.IsVisible;
+            var prevUri = await apod.GetPreviousUri();
+            TheImage.Source = prevUri;
+            ImageDescription = apod.Information;
+            Title = apod.Date;
+        };
+
+        timer.Start();
+    }
+
+    private void StopTimer() 
+    {
+        timer?.Stop(); 
     }
 
     private async void TapGestureRecognizer_Tapped(object sender, TappedEventArgs e)

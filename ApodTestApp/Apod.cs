@@ -156,13 +156,13 @@ namespace ApodTestApp
                 $"\u00A9 {currentApodData.copyright}{Environment.NewLine}" +
                 $"{Environment.NewLine}Image Date: {currentApodData.date}";
         }
-
+        // get previous image
         public async Task<Uri> GetPreviousUri()
         {
             lastDate = lastDate.AddDays(-1);
             return await GetApodUriByDate(lastDate);
         }        
-        
+        // get next image
         public async Task<Uri> GetNextUri()
         {
             lastDate = lastDate.AddDays(1);
