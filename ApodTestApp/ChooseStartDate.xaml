@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ApodTestApp.ChooseStartDate"
              Title="ChooseStartDate">
+
     <VerticalStackLayout>
         <Label 
             Text="Choose a start date for your images!"
@@ -13,7 +14,7 @@
             x:Name="StartDatePicker"
             MinimumDate="01/01/2022"
             MaximumDate="12/31/2022"
-            Date="06/21/2022" 
+            Date="01/09/2022" 
             DateSelected="DatePicker_DateSelected"
                     />
         

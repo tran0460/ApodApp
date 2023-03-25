@@ -1,4 +1,6 @@
-﻿namespace ApodTestApp;
+﻿using System.Diagnostics;
+
+namespace ApodTestApp;
 
 public partial class MainPage : ContentPage
 {
@@ -15,18 +17,18 @@ public partial class MainPage : ContentPage
 
 		apod.GetApodUri(); // TODO - MOVE THIS
 
-        //StartTimer(1);
-
-        apod.GetNumberOfImages(10);
 	}
 
     protected override async void OnNavigatedTo(NavigatedToEventArgs args)
     {
         base.OnNavigatedTo(args);
 
+        Debug.WriteLine(App.StartDate);
+
         Uri uri = null;
 
-        if(apod.LastUri == null)
+
+        if (apod.LastUri == null)
         {
             uri = await apod.GetApodUri();
         }
