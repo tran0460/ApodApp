@@ -5,8 +5,19 @@
              Title="ChooseStartDate">
     <VerticalStackLayout>
         <Label 
-            Text="Welcome to .NET MAUI!"
+            Text="Choose a start date for your images!"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
+        
+        <DatePicker MinimumDate="01/01/2022"
+            MaximumDate="12/31/2022"
+            Date="06/21/2022" />
+        
+        <Button x:Name="chooseStartDate"
+                    Clicked="chooseStartDate_Clicked"
+                    Text="Go"
+                    HeightRequest="30" 
+                    WidthRequest="100"
+                    />
     </VerticalStackLayout>
 </ContentPage>
