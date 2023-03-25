@@ -7,23 +7,29 @@
     Shell.FlyoutBehavior="Disabled">
 
     <TabBar>
-        
-    
+
+
         <ShellContent
-            Title="Home"
+            Icon="house.png"
             ContentTemplate="{DataTemplate local:MainPage}"
-            Route="MainPage" />         
-        
-        <!--<ShellContent
-            Title="Home"
-            ContentTemplate="{DataTemplate local:MainPage}"
-            Route="MainPage" />-->        
-        
+            Route="MainPage" />        
         <ShellContent
-            Title="SlideShow"
-            Icon="display.png"
+            Icon="calendar_check.png"
+            ContentTemplate="{DataTemplate local:ChooseStartDate}"
+            Route="ChooseStartDate" />
+        <ShellContent
+            Icon="calendar_days.png"
+            ContentTemplate="{DataTemplate local:SetRangeDate}"
+            Route="SetRangeDate" />
+        <ShellContent
+            Icon="shuffle.png"
+            ContentTemplate="{DataTemplate local:PickRandomNumber}"
+            Route="PickRandomNumber" />
+        <ShellContent
+             Icon="display.png"
             ContentTemplate="{DataTemplate local:SlideShowPage}"
             Route="SlideShow" />
+        
     </TabBar>
 
 </Shell>
