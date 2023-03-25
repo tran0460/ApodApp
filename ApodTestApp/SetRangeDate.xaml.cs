@@ -12,4 +12,12 @@ public partial class SetRangeDate : ContentPage
 
     }
 
+    private void StartDatePicker_DateSelected(object sender, DateChangedEventArgs e)
+    {
+    }
+
+    private void EndDatePicker_DateSelected(object sender, DateChangedEventArgs e)
+    {
+
+    }
 }

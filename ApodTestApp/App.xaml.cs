@@ -11,6 +11,9 @@ public partial class App : Application
     public static int SlideShowDelay { get; set; } = 1;
 
     public static DateTime StartDate { get; set; } = DateTime.Now;
+
+    public static DateTime DateRangeStartDate { get; set; } = DateTime.Now;
+    public static DateTime DateRangeEndDate { get; set; } = DateTime.Now;
 	public App()
 	{
 		InitializeComponent();
@@ -28,6 +31,8 @@ public partial class App : Application
         UseHiDef = Preferences.Default.Get("UseHiDef", false);
         NumberOfRandomImages = Preferences.Default.Get("NumberOfRandomImages", 1);
         SlideShowDelay = Preferences.Default.Get("SlideShowDelay", 1);
+        DateRangeStartDate = Preferences.Default.Get("DateRangeStartDate", DateTime.Now);
+        DateRangeEndDate = Preferences.Default.Get("DateRangeEndDate", DateTime.Now);
 
     }
 
@@ -43,6 +48,10 @@ public partial class App : Application
 
         var start = StartDate.ToBinary();
         Preferences.Default.Set("StartDate", start);
+        var dateRangeStart = DateRangeStartDate.ToBinary();
+        var dateRangeEnd = DateRangeEndDate.ToBinary();
+        Preferences.Default.Set("DateRangeStartDate", DateRangeStartDate);
+        Preferences.Default.Set("DateRangeEndDate", DateRangeEndDate);
 
     }
 }

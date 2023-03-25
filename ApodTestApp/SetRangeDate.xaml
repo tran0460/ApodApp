@@ -12,21 +12,26 @@
             Text="Choose a start date"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
-        <DatePicker MinimumDate="01/01/2022"
+        <DatePicker 
+            x:Name="StartDatePicker"
+            DateSelected="StartDatePicker_DateSelected"
+            MinimumDate="01/01/2022"
             MaximumDate="12/31/2022"
             Date="06/21/2022" />
         <Label 
             Text="Choose an end date"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
-        <DatePicker MinimumDate="01/01/2022"
+        <DatePicker 
+            x:Name="EndDatePicker"
+            DateSelected="EndDatePicker_DateSelected"
+            MinimumDate="01/01/2022"
             MaximumDate="12/31/2022"
             Date="06/21/2022" />
         <Button x:Name="ChooseDateRange"
-                    Clicked="ChooseDateRange_Clicked"
-                    Text="Go"
-                    HeightRequest="30" 
-                    WidthRequest="100"
-                    />
+            Clicked="ChooseDateRange_Clicked"
+            Text="Go"
+            HeightRequest="30" 
+            WidthRequest="100" />
     </VerticalStackLayout>
 </ContentPage>
