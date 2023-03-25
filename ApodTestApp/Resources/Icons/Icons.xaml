@@ -3,6 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ApodTestApp.Resources.Icons.Dictionary1">
 
-    <x:String x:Key="IconGear">f013</x:String>
+    <x:String x:Key="IconGear">&#xf013;</x:String>
 
 </ResourceDictionary>
