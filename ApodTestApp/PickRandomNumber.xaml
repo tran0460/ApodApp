@@ -13,7 +13,7 @@
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
         <Slider Maximum="100"
-                ValueChanged="" />
+                />
         <Button x:Name="ChooseNumberOfImages"
                     Clicked="ChooseNumberOfImages_Clicked"
                     Text="Go"

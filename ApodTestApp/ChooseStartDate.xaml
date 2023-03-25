@@ -9,12 +9,16 @@
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
         
-        <DatePicker MinimumDate="01/01/2022"
+        <DatePicker 
+            x:Name="StartDatePicker"
+            MinimumDate="01/01/2022"
             MaximumDate="12/31/2022"
-            Date="06/21/2022" />
+            Date="06/21/2022" 
+            DateSelected="DatePicker_DateSelected"
+                    />
         
-        <Button x:Name="ChooseStartDate"
-                    Clicked="ChooseStartDate_Clicked"
+        <Button x:Name="ChooseStartDateBtn"
+                    Clicked="ChooseStartDateBtn_Clicked"
                     Text="Go"
                     HeightRequest="30" 
                     WidthRequest="100"
