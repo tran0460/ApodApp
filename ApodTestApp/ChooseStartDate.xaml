@@ -13,8 +13,8 @@
             MaximumDate="12/31/2022"
             Date="06/21/2022" />
         
-        <Button x:Name="chooseStartDate"
-                    Clicked="chooseStartDate_Clicked"
+        <Button x:Name="ChooseStartDate"
+                    Clicked="ChooseStartDate_Clicked"
                     Text="Go"
                     HeightRequest="30" 
                     WidthRequest="100"

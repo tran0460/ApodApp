@@ -7,7 +7,7 @@ public partial class ChooseStartDate : ContentPage
 		InitializeComponent();
 	}
 
-    private void chooseStartDate_Clicked(object sender, EventArgs e)
+    private void ChooseStartDate_Clicked(object sender, EventArgs e)
     {
 
     }

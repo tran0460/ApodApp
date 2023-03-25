@@ -6,4 +6,9 @@ public partial class PickRandomNumber : ContentPage
 	{
 		InitializeComponent();
 	}
+
+    private void ChooseNumberOfImages_Clicked(object sender, EventArgs e)
+    {
+
+    }
 }

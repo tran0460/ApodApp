@@ -5,8 +5,20 @@
              Title="PickRandomNumber">
     <VerticalStackLayout>
         <Label 
-            Text="Welcome to .NET MAUI!"
+            Text="Choose between 1 and 100 images to display"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
+        <Label 
+            Text="Choose between 1 and 100 images to display"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+        <Slider Maximum="100"
+                ValueChanged="" />
+        <Button x:Name="ChooseNumberOfImages"
+                    Clicked="ChooseNumberOfImages_Clicked"
+                    Text="Go"
+                    HeightRequest="30" 
+                    WidthRequest="100"
+                    />
     </VerticalStackLayout>
 </ContentPage>
