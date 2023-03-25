@@ -6,4 +6,9 @@ public partial class SetRangeDate : ContentPage
 	{
 		InitializeComponent();
 	}
+
+    private void chooseDateRange_Clicked(object sender, EventArgs e)
+    {
+
+    }
 }
