@@ -8,6 +8,8 @@ public partial class App : Application
     // between 1 and 100
     public static int NumberOfRandomImages { get; set; } = 1;
 
+    public static int SlideShowDelay { get; set; } = 1;
+
     public static DateTime StartDate { get; set; } = DateTime.Now;
 	public App()
 	{
@@ -25,6 +27,7 @@ public partial class App : Application
         StartDate = Preferences.Default.Get("StartDate", DateTime.Now);
         UseHiDef = Preferences.Default.Get("UseHiDef", false);
         NumberOfRandomImages = Preferences.Default.Get("NumberOfRandomImages", 1);
+        SlideShowDelay = Preferences.Default.Get("SlideShowDelay", 1);
 
     }
 
@@ -36,6 +39,7 @@ public partial class App : Application
 
         Preferences.Default.Set("UseHiDef", UseHiDef);
         Preferences.Default.Set("NumberOfRandomImages", NumberOfRandomImages);
+        Preferences.Default.Set("SlideShowDelay", SlideShowDelay);
 
         var start = StartDate.ToBinary();
         Preferences.Default.Set("StartDate", start);

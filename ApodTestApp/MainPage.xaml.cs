@@ -6,6 +6,7 @@ public partial class MainPage : ContentPage
 
 	public string ImageDescription { get; set; } = string.Empty;
 
+
     IDispatcherTimer timer = null;
 
 	public MainPage()
