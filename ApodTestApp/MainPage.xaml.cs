@@ -15,13 +15,15 @@ public partial class MainPage : ContentPage
 	{
 		InitializeComponent();
 
-		apod.GetApodUri(); // TODO - MOVE THIS
+		//apod.GetApodUri(); // TODO - MOVE THIS
 
 	}
 
     protected override async void OnNavigatedTo(NavigatedToEventArgs args)
     {
         base.OnNavigatedTo(args);
+
+        Debug.WriteLine(App.PreviousPage);
 
         Uri uri = null;
 

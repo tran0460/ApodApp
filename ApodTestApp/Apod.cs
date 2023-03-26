@@ -65,6 +65,8 @@ namespace ApodTestApp
 
         private ApodData currentApodData;
 
+        private ApodData[] imagesArray;
+
         #endregion
 
         #region Constructor
@@ -163,34 +165,22 @@ namespace ApodTestApp
         }
 
         // get number of random images
-        public async Task<Uri[]> GetNumberOfImages(int number)
+        public async Task<ApodData[]> GetNumberOfImages(int number)
         {
             var request = new Uri($"{baseUrl}{apiKey}{thumbsParameter}{countParameter}{number}");
 
 
             var responseArray = await httpClient.GetFromJsonAsync<ApodData[]>(request);
 
-            if (responseArray.Length > 0)
-            {
+            // Error handling will be done somewhere else
 
-                var arrayOfUri = responseArray.Select(data =>
-                {
-                    currentApodData = data;
-                    return GetValidUri();
-                }).ToArray(); 
+            return imagesArray = responseArray;
 
-                return arrayOfUri;
-            }
-            else
-            {
-                var errorArray = new Uri[] { new Uri($"{errorUrl}{LastError}") };
-                return errorArray;
-            }
         }
 
         // get images from start date and end date
 
-        private async Task<Uri[]> GetImagesByDateRange(DateTime startDate, DateTime endDate)
+        private async Task<ApodData[]> GetImagesByDateRange(DateTime startDate, DateTime endDate)
         {
 
             var startDateFormatted = startDate.ToString("yyyy-MM-dd");
@@ -200,26 +190,12 @@ namespace ApodTestApp
 
             var responseArray = await httpClient.GetFromJsonAsync<ApodData[]>(request);
 
-            if (responseArray.Length > 0)
-            {
-
-                var arrayOfUri = responseArray.Select(data =>
-                {
-                    currentApodData = data;
-                    return GetValidUri();
-                }).ToArray();
-
-                return arrayOfUri;
-            }
-            else
-            {
-                var errorArray = new Uri[] { new Uri($"{errorUrl}{LastError}") };
-                return errorArray;
-            }
+            // Error handling will be done somewhere else
+            return imagesArray = responseArray;
         }        
         
         // get images by start date
-        private async Task<Uri[]> GetImagesByStartDate(DateTime startDate)
+        private async Task<ApodData[]> GetImagesByStartDate(DateTime startDate)
         {
 
             var startDateFormatted = startDate.ToString("yyyy-MM-dd");
@@ -228,22 +204,8 @@ namespace ApodTestApp
 
             var responseArray = await httpClient.GetFromJsonAsync<ApodData[]>(request);
 
-            if (responseArray.Length > 0)
-            {
-
-                var arrayOfUri = responseArray.Select(data =>
-                {
-                    currentApodData = data;
-                    return GetValidUri();
-                }).ToArray();
-
-                return arrayOfUri;
-            }
-            else
-            {
-                var errorArray = new Uri[] { new Uri($"{errorUrl}{LastError}") };
-                return errorArray;
-            }
+            // Error handling will be done somewhere else
+            return imagesArray = responseArray;
         }
 
         // get previous image
