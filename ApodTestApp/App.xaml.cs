@@ -16,7 +16,7 @@ public partial class App : Application
     public static DateTime DateRangeEndDate { get; set; } = DateTime.Now;
 
     // Previous page the user was on
-    public static String PreviousPage { get; set;} = "MainPage";
+    public static string PreviousPage { get; set; } = string.Empty;
 	public App()
 	{
 		InitializeComponent();

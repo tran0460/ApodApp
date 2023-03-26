@@ -28,9 +28,7 @@ public partial class MainPage : ContentPage
 
         Uri uri = null;
 
-        // app just started up
-        if (App.PreviousPage == "MainPage")
-        {
+
         if (apod.LastUri == null)
         {
             uri = await apod.GetApodUri();
@@ -39,12 +37,10 @@ public partial class MainPage : ContentPage
         {
             uri = apod.LastUri;
         }
-        }
+
         if (App.PreviousPage == "ChooseStartDate")
         {
-            await apod.GetImagesByStartDate(App.StartDate);
-            uri = apod.ReturnCurrentImageInArrayUri();
-            Debug.WriteLine(uri.ToString());
+            uri = await apod.GetApodUriByDate(App.StartDate);
         }
 
         if(uri != null)

@@ -169,7 +169,6 @@ namespace ApodTestApp
         public Uri ReturnCurrentImageInArrayUri()
         {
             currentApodData = imagesArray[currentIndex];
-            Console.WriteLine(currentApodData);
             SetInformationAndDescription();
             return GetValidUri();
         }         
@@ -248,6 +247,7 @@ namespace ApodTestApp
 
             var request = new Uri($"{baseUrl}{apiKey}{startDateParameter}{startDateFormatted}{thumbsParameter}");
 
+            Debug.WriteLine(request.ToString());
             var responseArray = await httpClient.GetFromJsonAsync<ApodData[]>(request);
 
             currentIndex = 0;
@@ -269,7 +269,7 @@ namespace ApodTestApp
             return await GetApodUriByDate(lastDate);
         }
 
-        private async Task<Uri> GetApodUriByDate(DateTime newDate)
+        public async Task<Uri> GetApodUriByDate(DateTime newDate)
         {
             today = DateTime.Now;
 

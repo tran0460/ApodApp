@@ -14,6 +14,8 @@ public partial class SetRangeDate : ContentPage
     private async void ChooseDateRange_Clicked(object sender, EventArgs e)
     {
         App.PreviousPage = "SetRangeDate";
+
+
         await Shell.Current.GoToAsync("//MainPage");
     }
 

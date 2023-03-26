@@ -21,6 +21,7 @@ public partial class ChooseStartDate : ContentPage
     private async void ChooseStartDateBtn_Clicked(object sender, EventArgs e)
     {
         App.PreviousPage = "ChooseStartDate";
+
         await Shell.Current.GoToAsync("//MainPage");
 
     }
