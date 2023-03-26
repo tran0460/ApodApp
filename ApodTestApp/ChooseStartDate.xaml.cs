@@ -8,6 +8,8 @@ public partial class ChooseStartDate : ContentPage
 	public ChooseStartDate()
 	{
         InitializeComponent();
+        StartDatePicker.Date = App.StartDate;
+        StartDatePicker.MaximumDate = DateTime.Today;
 	}
 
 

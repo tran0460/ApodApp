@@ -5,6 +5,10 @@ public partial class SetRangeDate : ContentPage
 	public SetRangeDate()
 	{
 		InitializeComponent();
+        StartDatePicker.Date = App.DateRangeStartDate;
+        EndDatePicker.Date = App.DateRangeEndDate;
+        StartDatePicker.MaximumDate = DateTime.Now;
+        EndDatePicker.MaximumDate = DateTime.Now;
 	}
 
     private async void ChooseDateRange_Clicked(object sender, EventArgs e)

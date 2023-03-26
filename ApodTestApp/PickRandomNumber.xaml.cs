@@ -5,9 +5,11 @@ public partial class PickRandomNumber : ContentPage
 	public PickRandomNumber()
 	{
 		InitializeComponent();
+        ImagesSlider.Value = Convert.ToDouble(App.NumberOfRandomImages);
+        CurrentSliderValue.Text = $"{App.NumberOfRandomImages}";
 	}
 
-    private void ChooseNumberOfImages_Clicked(object sender, EventArgs e)
+    private async void ChooseNumberOfImages_Clicked(object sender, EventArgs e)
     {
         await Navigation.PushAsync(new MainPage());
     }
@@ -15,5 +17,7 @@ public partial class PickRandomNumber : ContentPage
     private void Slider_ValueChanged(object sender, ValueChangedEventArgs e)
     {
         App.NumberOfRandomImages = Convert.ToInt32(ImagesSlider.Value);
+        CurrentSliderValue.Text = $"{App.NumberOfRandomImages}";
+
     }
 }

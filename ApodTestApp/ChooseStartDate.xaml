@@ -12,9 +12,7 @@
         
         <DatePicker 
             x:Name="StartDatePicker"
-            MinimumDate="01/01/2022"
-            MaximumDate="12/31/2022"
-            Date="01/09/2022" 
+            MinimumDate="01/01/1995"
             DateSelected="DatePicker_DateSelected"
                     />
         

@@ -9,7 +9,8 @@
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
         <Label 
-            Text="Choose between 1 and 100 images to display"
+            Text=""
+            x:Name="CurrentSliderValue"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
         <Slider Maximum="100"
