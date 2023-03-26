@@ -25,6 +25,7 @@ public partial class MainPage : ContentPage
 
         Uri uri = null;
 
+        Debug.WriteLine(args);
 
         if (apod.LastUri == null)
         {

@@ -11,6 +11,7 @@ public partial class PickRandomNumber : ContentPage
 
     private async void ChooseNumberOfImages_Clicked(object sender, EventArgs e)
     {
+        App.PreviousPage = "PickRandomNumber";
         await Navigation.PushAsync(new MainPage());
     }
 

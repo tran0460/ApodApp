@@ -2,8 +2,8 @@
 
 public partial class App : Application
 {
-	public static bool UseHiDef { get; set; } = false;
-	public static bool LoopAtEnd { get; set; } = true;
+    public static bool UseHiDef { get; set; } = false;
+    public static bool LoopAtEnd { get; set; } = true;
 
     // between 1 and 100
     public static int NumberOfRandomImages { get; set; } = 1;
@@ -14,6 +14,9 @@ public partial class App : Application
 
     public static DateTime DateRangeStartDate { get; set; } = DateTime.Now;
     public static DateTime DateRangeEndDate { get; set; } = DateTime.Now;
+
+    // Previous page the user was on
+    public static String PreviousPage { get; set;} = "MainPage";
 	public App()
 	{
 		InitializeComponent();
