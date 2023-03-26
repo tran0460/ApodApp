@@ -4,7 +4,7 @@ namespace ApodTestApp;
 
 public partial class MainPage : ContentPage
 {
-	private Apod apod = new();
+	private Apod apod = new(App.UseHiDef);
 
 	public string ImageDescription { get; set; } = string.Empty;
 
@@ -15,11 +15,11 @@ public partial class MainPage : ContentPage
 	{
 		InitializeComponent();
 
-		apod.GetApodUri(); // TODO - MOVE THIS
+		//apod.GetApodUri(); // TODO - MOVE THIS
 
 	}
 
-    protected override async void OnNavigatedTo(NavigatedToEventArgs args)
+    protected async override  void OnNavigatedTo(NavigatedToEventArgs args)
     {
         base.OnNavigatedTo(args);
 
@@ -41,6 +41,8 @@ public partial class MainPage : ContentPage
             TheImage.Source = uri;
             ImageDescription = apod.Information;
             Title = apod.Title;
+
+            TheTitle.Text = apod.Date;
         }
     }
 
@@ -53,12 +55,14 @@ public partial class MainPage : ContentPage
                 TheImage.Source = prevUri;
                 ImageDescription = apod.Information;
                 Title = apod.Date;
+                TheTitle.Text = apod.Date;
                 break;
             case SwipeDirection.Right:
                 var uri = await apod.GetNextUri();
                 TheImage.Source = uri;
                 ImageDescription = apod.Information;
                 Title = apod.Date;
+                TheTitle.Text = apod.Date;
                 break;
         }
     }

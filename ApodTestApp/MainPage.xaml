@@ -14,10 +14,12 @@
             <Button x:Name="settingsButton"
                     Clicked="settingsButton_Clicked"
                     FontFamily="FA-S"
+                    FontSize="Large"
                     Text="{StaticResource IconGear}"
                     HeightRequest="50" 
                     WidthRequest="150"
                     FontAttributes="Bold"
+                    HorizontalOptions="EndAndExpand"
                     />
         </StackLayout>
     </Shell.TitleView>
