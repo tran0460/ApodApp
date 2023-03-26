@@ -69,16 +69,32 @@ public partial class MainPage : ContentPage
         switch(e.Direction)
         {
             case SwipeDirection.Left:
-                var prevUri = await apod.GetPreviousUri();
-                TheImage.Source = prevUri;
+                if (App.PreviousPage == "ChooseStartDate" || App.PreviousPage == "MainPage")
+                {
+                    var prevUri = await apod.GetPreviousUri();
+                    TheImage.Source = prevUri;
+                }
+                if (App.PreviousPage == "SetRangeDate" || App.PreviousPage == "PickRandomNumber")
+                {
+                    var prevUri = apod.ReturnNextImageInArrayUri();
+                    TheImage.Source = prevUri;
+                }
                 ImageDescription = apod.Information;
                 Title = apod.Date;
                 TheTitle.Text = apod.Date;
                 ImageDescriptionLabel.Text = apod.Information;
                 break;
             case SwipeDirection.Right:
-                var uri = await apod.GetNextUri();
-                TheImage.Source = uri;
+                if (App.PreviousPage == "ChooseStartDate" || App.PreviousPage == "MainPage")
+                {
+                    var prevUri = await apod.GetNextUri();
+                    TheImage.Source = prevUri;
+                }
+                else if (App.PreviousPage == "SetRangeDate" || App.PreviousPage == "PickRandomNumber")
+                {
+                    var prevUri = apod.ReturnPreviousImageInArrayUri();
+                    TheImage.Source = prevUri;
+                }
                 ImageDescription = apod.Information;
                 Title = apod.Date;
                 TheTitle.Text = apod.Date;
