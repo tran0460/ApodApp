@@ -9,6 +9,11 @@ public partial class PickRandomNumber : ContentPage
 
     private void ChooseNumberOfImages_Clicked(object sender, EventArgs e)
     {
+        await Navigation.PushAsync(new MainPage());
+    }
 
+    private void Slider_ValueChanged(object sender, ValueChangedEventArgs e)
+    {
+        App.NumberOfRandomImages = Convert.ToInt32(ImagesSlider.Value);
     }
 }
