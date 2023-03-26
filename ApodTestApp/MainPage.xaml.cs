@@ -43,7 +43,18 @@ public partial class MainPage : ContentPage
             uri = await apod.GetApodUriByDate(App.StartDate);
         }
 
-        if(uri != null)
+        if (App.PreviousPage == "SetRangeDate")
+        {
+            await apod.GetImagesByDateRange(App.DateRangeStartDate, App.DateRangeEndDate);
+            uri = apod.ReturnCurrentImageInArrayUri();
+        }
+
+        if (App.PreviousPage == "PickRandomNumber")
+        {
+            await apod.GetNumberOfImages(App.NumberOfRandomImages);
+            uri = apod.ReturnCurrentImageInArrayUri();
+        }
+        if (uri != null)
         {
             TheImage.Source = uri;
             ImageDescription = apod.Information;
