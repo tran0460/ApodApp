@@ -12,7 +12,7 @@
         
         <DatePicker 
             x:Name="StartDatePicker"
-            MinimumDate="01/01/1995"
+            MinimumDate="01/06/1995"
             DateSelected="DatePicker_DateSelected"
                     />
         
