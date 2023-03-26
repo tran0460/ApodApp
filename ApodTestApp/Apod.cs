@@ -39,7 +39,7 @@ namespace ApodTestApp
         private const string noCopyright = "None";
         private const string dateParameter = "&date=";
         private const string startDateParameter = "&start_date=";
-        private const string endDateParameter = "&end_date=";
+        private const string endDateParameter = "&end_date="; 
         private const string countParameter = "&count=";
         #endregion
 
@@ -52,6 +52,8 @@ namespace ApodTestApp
         public bool HighDef { get; set; } = false;
         public string Date { get; set; } = string.Empty;
         public Uri LastUri { get; private set; } = null;
+
+        public int currentIndex { get; private set; } = 0;
 
         #endregion
 
@@ -78,7 +80,7 @@ namespace ApodTestApp
             epoc = new DateTime(1995, 06, 16); // first apod image date
 
             today = DateTime.Now;
-        }
+        } 
 
         #endregion
 
@@ -164,6 +166,49 @@ namespace ApodTestApp
                 $"{Environment.NewLine}Image Date: {currentApodData.date}";
         }
 
+        public Uri ReturnCurrentImageInArrayUri()
+        {
+            currentApodData = imagesArray[currentIndex];
+            Console.WriteLine(currentApodData);
+            SetInformationAndDescription();
+            return GetValidUri();
+        }         
+        
+        public Uri ReturnNextImageInArrayUri()
+        {
+            // if last item, go to the first
+            if (currentIndex == imagesArray.Length - 1)
+            {
+                currentIndex = 0;
+                currentApodData = imagesArray[currentIndex];
+            }
+            else
+            {
+                currentIndex++;
+                currentApodData = imagesArray[currentIndex];
+            }
+            SetInformationAndDescription();
+            return GetValidUri();
+        }        
+        
+        public Uri ReturnPreviousImageInArrayUri()
+        {
+            // if first item, go to the last
+            if (currentIndex == 0)
+            {
+                currentIndex = imagesArray.Length - 1;
+                currentApodData = imagesArray[currentIndex];
+            }
+            else
+            {
+                currentIndex--;
+                currentApodData = imagesArray[currentIndex];
+            }
+            SetInformationAndDescription();
+            return GetValidUri();
+
+        }
+
         // get number of random images
         public async Task<ApodData[]> GetNumberOfImages(int number)
         {
@@ -172,15 +217,15 @@ namespace ApodTestApp
 
             var responseArray = await httpClient.GetFromJsonAsync<ApodData[]>(request);
 
+            currentIndex = 0;
             // Error handling will be done somewhere else
-
             return imagesArray = responseArray;
 
         }
 
         // get images from start date and end date
 
-        private async Task<ApodData[]> GetImagesByDateRange(DateTime startDate, DateTime endDate)
+        public async Task<ApodData[]> GetImagesByDateRange(DateTime startDate, DateTime endDate)
         {
 
             var startDateFormatted = startDate.ToString("yyyy-MM-dd");
@@ -190,12 +235,13 @@ namespace ApodTestApp
 
             var responseArray = await httpClient.GetFromJsonAsync<ApodData[]>(request);
 
+            currentIndex = 0;
             // Error handling will be done somewhere else
             return imagesArray = responseArray;
         }        
         
         // get images by start date
-        private async Task<ApodData[]> GetImagesByStartDate(DateTime startDate)
+        public async Task<ApodData[]> GetImagesByStartDate(DateTime startDate)
         {
 
             var startDateFormatted = startDate.ToString("yyyy-MM-dd");
@@ -204,6 +250,7 @@ namespace ApodTestApp
 
             var responseArray = await httpClient.GetFromJsonAsync<ApodData[]>(request);
 
+            currentIndex = 0;
             // Error handling will be done somewhere else
             return imagesArray = responseArray;
         }

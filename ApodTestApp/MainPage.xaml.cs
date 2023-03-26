@@ -15,20 +15,20 @@ public partial class MainPage : ContentPage
 	{
 		InitializeComponent();
 
-		//apod.GetApodUri(); // TODO - MOVE THIS
+        apod.GetApodUri(); // TODO - MOVE THIS
 
-	}
+    }
 
     protected override async void OnNavigatedTo(NavigatedToEventArgs args)
     {
         base.OnNavigatedTo(args);
 
-        Debug.WriteLine(App.PreviousPage);
 
         Uri uri = null;
 
-        Debug.WriteLine(args);
-
+        // app just started up
+        if (App.PreviousPage == "MainPage")
+        {
         if (apod.LastUri == null)
         {
             uri = await apod.GetApodUri();
@@ -36,6 +36,13 @@ public partial class MainPage : ContentPage
         else
         {
             uri = apod.LastUri;
+        }
+        }
+        if (App.PreviousPage == "ChooseStartDate")
+        {
+            await apod.GetImagesByStartDate(App.StartDate);
+            uri = apod.ReturnCurrentImageInArrayUri();
+            Debug.WriteLine(uri.ToString());
         }
 
         if(uri != null)

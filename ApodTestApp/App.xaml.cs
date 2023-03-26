@@ -28,7 +28,6 @@ public partial class App : Application
     {
         base.OnStart();
         //TODO: add slide show delay
-        //TODO: add start and end dates chosen 
 
         StartDate = Preferences.Default.Get("StartDate", DateTime.Now);
         UseHiDef = Preferences.Default.Get("UseHiDef", false);
@@ -43,7 +42,6 @@ public partial class App : Application
     {
         base.OnSleep();
         //TODO: add slide show delay
-        //TODO: add start and end dates chosen 
 
         Preferences.Default.Set("UseHiDef", UseHiDef);
         Preferences.Default.Set("NumberOfRandomImages", NumberOfRandomImages);

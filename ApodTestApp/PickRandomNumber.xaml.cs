@@ -12,7 +12,7 @@ public partial class PickRandomNumber : ContentPage
     private async void ChooseNumberOfImages_Clicked(object sender, EventArgs e)
     {
         App.PreviousPage = "PickRandomNumber";
-        await Navigation.PushAsync(new MainPage());
+        await Shell.Current.GoToAsync("//MainPage");
     }
 
     private void Slider_ValueChanged(object sender, ValueChangedEventArgs e)
