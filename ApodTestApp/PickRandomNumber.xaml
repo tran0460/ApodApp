@@ -15,7 +15,8 @@
         <Slider Maximum="100"
                 Minimum="1"
                 x:Name="ImagesSlider"
-                WidthRequest="50"
+                WidthRequest="300"
+                VerticalOptions="Center"
                 ValueChanged="Slider_ValueChanged" />
         <Button x:Name="ChooseNumberOfImages"
                     Clicked="ChooseNumberOfImages_Clicked"

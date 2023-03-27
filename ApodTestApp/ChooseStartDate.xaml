@@ -14,6 +14,8 @@
             x:Name="StartDatePicker"
             MinimumDate="01/01/1995"
             DateSelected="DatePicker_DateSelected"
+            HorizontalOptions="Center"
+            Margin="20"
                     />
         
         <Button x:Name="ChooseStartDateBtn"

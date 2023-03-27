@@ -30,6 +30,7 @@
                 <SwipeView.GestureRecognizers>
                     <SwipeGestureRecognizer Direction="Left" Swiped="OnSwiped" />
                     <SwipeGestureRecognizer Direction="Right" Swiped="OnSwiped" />
+                    <SwipeGestureRecognizer Direction="Down" Swiped="OnSwiped" />
                     <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" 
                                   NumberOfTapsRequired="2"
                                   />
@@ -41,35 +42,5 @@
             <Label x:Name="ImageDescriptionLabel" IsVisible="false" HorizontalOptions="CenterAndExpand" />
         </StackLayout>
     </Grid>
-
-    <!--<StackLayout Orientation="Vertical">
-       
-        <SwipeView>
-            <SwipeView.GestureRecognizers>
-                <SwipeGestureRecognizer Direction="Left" Swiped="OnSwiped" />
-                <SwipeGestureRecognizer Direction="Right" Swiped="OnSwiped" />
-                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" 
-                                  NumberOfTapsRequired="2"
-                                  />
-            </SwipeView.GestureRecognizers>
-
-            <Image x:Name="TheImage" Aspect="AspectFit"
-           SemanticProperties.Description="Random Image!" />
-        </SwipeView>
-        <Label Text="Your paragraph text here." />
-    </StackLayout>-->
-
-    <!--<SwipeView>
-        <SwipeView.GestureRecognizers>
-            <SwipeGestureRecognizer Direction="Left" Swiped="OnSwiped" />
-            <SwipeGestureRecognizer Direction="Right" Swiped="OnSwiped" />
-            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" 
-                                  NumberOfTapsRequired="2"
-                                  />
-        </SwipeView.GestureRecognizers>
-
-        <Image x:Name="TheImage" Margin="10" HorizontalOptions="Center" VerticalOptions="Center"
-           SemanticProperties.Description="Random Image!" />
-    </SwipeView>-->
 
 </ContentPage>

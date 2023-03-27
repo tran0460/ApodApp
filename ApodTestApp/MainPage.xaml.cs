@@ -54,6 +54,12 @@ public partial class MainPage : ContentPage
             await apod.GetNumberOfImages(App.NumberOfRandomImages);
             uri = apod.ReturnCurrentImageInArrayUri();
         }
+        if (App.PreviousPage == "SlideshowPage")
+        {
+            Debug.WriteLine(App.ThePageBefore);
+            Debug.WriteLine(App.SlideShowDelay);
+            StartTimer(App.SlideShowDelay);
+        }
         if (uri != null)
         {
             TheImage.Source = uri;
@@ -74,18 +80,23 @@ public partial class MainPage : ContentPage
             case SwipeDirection.Right:
                 handleSwipeRight();
                 break;
+            case SwipeDirection.Down:
+                StopTimer();
+                break;
         }
     }
 
     private async void handleSwipeLeft()
     {
-        if (App.PreviousPage == "ChooseStartDate" || App.PreviousPage == "MainPage")
+        if (App.PreviousPage == "ChooseStartDate" || App.PreviousPage == "MainPage" || App.ThePageBefore == "MainPage" || App.ThePageBefore == "ChooseStartDate")
         {
+        Debug.WriteLine("Handle Swipe");
             var prevUri = await apod.GetPreviousUri();
             TheImage.Source = prevUri;
         }
-        if (App.PreviousPage == "SetRangeDate" || App.PreviousPage == "PickRandomNumber")
+        if (App.PreviousPage == "SetRangeDate" || App.PreviousPage == "PickRandomNumber" || App.ThePageBefore == "SetRangeDate" || App.ThePageBefore == "PickRandomNumber")
         {
+        Debug.WriteLine("Handle Swipe");
             var prevUri = apod.ReturnNextImageInArrayUri();
             TheImage.Source = prevUri;
         }
@@ -97,12 +108,14 @@ public partial class MainPage : ContentPage
 
     private async void handleSwipeRight()
     {
-        if (App.PreviousPage == "ChooseStartDate" || App.PreviousPage == "MainPage")
+        // Additional conditions for slideshow handling
+        if (App.PreviousPage == "ChooseStartDate" || App.PreviousPage == "MainPage" )
         {
             var prevUri = await apod.GetNextUri();
             TheImage.Source = prevUri;
         }
-        else if (App.PreviousPage == "SetRangeDate" || App.PreviousPage == "PickRandomNumber")
+        // Additional conditions for slideshow handling
+        else if (App.PreviousPage == "SetRangeDate" || App.PreviousPage == "PickRandomNumber" )
         {
             var prevUri = apod.ReturnPreviousImageInArrayUri();
             TheImage.Source = prevUri;
@@ -120,11 +133,7 @@ public partial class MainPage : ContentPage
 
         timer.Tick += async (_, _) =>
         {
-            //TheImage.IsVisible = !TheImage.IsVisible;
-            var prevUri = await apod.GetPreviousUri();
-            TheImage.Source = prevUri;
-            ImageDescription = apod.Information;
-            Title = apod.Date;
+            handleSwipeLeft();
         };
 
         timer.Start();

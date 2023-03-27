@@ -6,6 +6,7 @@ public partial class SlideShowPage : ContentPage
 	{
 		InitializeComponent();
 		SlideshowSlider.Value = Convert.ToDouble(App.SlideShowDelay);
+        DelayValue.Text = $"{App.SlideShowDelay}";
 	}
 
     private void SlideshowSlider_ValueChanged(object sender, ValueChangedEventArgs e)
@@ -16,6 +17,9 @@ public partial class SlideShowPage : ContentPage
 
     private async void SlideshowBtn_Clicked(object sender, EventArgs e)
     {
+        App.ThePageBefore = App.PreviousPage;
+        App.PreviousPage = "SlideshowPage";
+
         await Shell.Current.GoToAsync("//MainPage");
     }
 }

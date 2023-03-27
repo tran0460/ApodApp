@@ -17,6 +17,8 @@ public partial class App : Application
 
     // Previous page the user was on
     public static string PreviousPage { get; set; } = "MainPage";
+    // The page before the previous page
+    public static string ThePageBefore { get; set; } = "MainPage";
 	public App()
 	{
 		InitializeComponent();

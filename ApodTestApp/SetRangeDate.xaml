@@ -11,19 +11,28 @@
         <Label 
             Text="Choose a start date"
             VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+            HorizontalOptions="Center" 
+            />
         <DatePicker 
             x:Name="StartDatePicker"
             DateSelected="StartDatePicker_DateSelected"
-            MinimumDate="01/01/1995" />
+            MinimumDate="01/01/1995" 
+            WidthRequest="150"
+            HorizontalOptions="Center"
+            />
         <Label 
             Text="Choose an end date"
             VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+            HorizontalOptions="Center" 
+            />
         <DatePicker 
             x:Name="EndDatePicker"
             DateSelected="EndDatePicker_DateSelected"
-            MinimumDate="01/01/1995" />
+            MinimumDate="01/01/1995" 
+            WidthRequest="150"
+            HorizontalOptions="Center"
+            Margin="20"
+            />
         <Button x:Name="ChooseDateRange"
             Clicked="ChooseDateRange_Clicked"
             Text="Go"
