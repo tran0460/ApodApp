@@ -6,4 +6,9 @@ public partial class SlideShowPage : ContentPage
 	{
 		InitializeComponent();
 	}
+
+    private void SlideshowSlider_ValueChanged(object sender, ValueChangedEventArgs e)
+    {
+
+    }
 }

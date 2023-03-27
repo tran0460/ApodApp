@@ -8,5 +8,10 @@
             Text="Slide Show Settings"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
+        <Slider Maximum="5"
+                Minimum="1"
+                x:Name="SlideshowSlider"
+                ValueChanged="SlideshowSlider_ValueChanged"
+                />
     </VerticalStackLayout>
 </ContentPage>
