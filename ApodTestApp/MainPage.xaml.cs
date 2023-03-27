@@ -8,6 +8,8 @@ public partial class MainPage : ContentPage
 
 	public string ImageDescription { get; set; } = string.Empty;
 
+    private bool IsDescriptionShow = false;
+
 
     IDispatcherTimer timer = null;
 
@@ -51,6 +53,7 @@ public partial class MainPage : ContentPage
             ImageDescription = apod.Information;
             Title = apod.Title;
             TheTitle.Text = apod.Date;
+            ImageDescriptionLabel.Text = apod.Information;
         }
     }
 
@@ -64,6 +67,7 @@ public partial class MainPage : ContentPage
                 ImageDescription = apod.Information;
                 Title = apod.Date;
                 TheTitle.Text = apod.Date;
+                ImageDescriptionLabel.Text = apod.Information;
                 break;
             case SwipeDirection.Right:
                 var uri = await apod.GetNextUri();
@@ -71,6 +75,7 @@ public partial class MainPage : ContentPage
                 ImageDescription = apod.Information;
                 Title = apod.Date;
                 TheTitle.Text = apod.Date;
+                ImageDescriptionLabel.Text = apod.Information;
                 break;
         }
     }
@@ -97,9 +102,12 @@ public partial class MainPage : ContentPage
         timer?.Stop(); 
     }
 
-    private async void TapGestureRecognizer_Tapped(object sender, TappedEventArgs e)
+    private  void TapGestureRecognizer_Tapped(object sender, TappedEventArgs e)
     {
-        await DisplayAlert("Image Description", ImageDescription, "OK");
+       
+        ImageDescriptionLabel.IsVisible = !ImageDescriptionLabel.IsVisible;
+        IsDescriptionShow = !IsDescriptionShow;
+               
     }
 
     private async void settingsButton_Clicked(object sender, EventArgs e)
