@@ -1,5 +1,4 @@
-﻿using Microsoft.Maui.ApplicationModel.DataTransfer;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 
 namespace ApodTestApp;
 
@@ -161,19 +160,15 @@ public partial class MainPage : ContentPage
     private async void shareImage_Clicked(object sender, EventArgs e)
     {
         if (TheImage.Source == null) return;
-        IShare share = DependencyService.Get<IShare>();
-        // If platform does not support sharing, return;
-        Debug.WriteLine(share);
-        if (share == null) return;  
-        await ShareUri(TheImage.Source.ToString(), share);
+        await ShareUri(TheImage.Source.ToString(), apod.Title);
     }
 
-    public async Task ShareUri(string uri, IShare share)
+    public async Task ShareUri(string uri, string title)
     {
-        await share.RequestAsync(new ShareTextRequest
+        await Share.RequestAsync(new ShareTextRequest
         {
-            Uri = uri,
-            Title = "Check out this cool apod photo"
+            Uri = uri.Replace("Uri: ", ""),
+            Title = title
         });
     }
 
