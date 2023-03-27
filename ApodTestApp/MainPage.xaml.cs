@@ -50,6 +50,7 @@ public partial class MainPage : ContentPage
             TheImage.Source = uri;
             ImageDescription = apod.Information;
             Title = apod.Title;
+            TheTitle.Text = apod.Date;
         }
     }
 
@@ -62,12 +63,14 @@ public partial class MainPage : ContentPage
                 TheImage.Source = prevUri;
                 ImageDescription = apod.Information;
                 Title = apod.Date;
+                TheTitle.Text = apod.Date;
                 break;
             case SwipeDirection.Right:
                 var uri = await apod.GetNextUri();
                 TheImage.Source = uri;
                 ImageDescription = apod.Information;
                 Title = apod.Date;
+                TheTitle.Text = apod.Date;
                 break;
         }
     }
