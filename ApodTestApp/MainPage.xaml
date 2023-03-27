@@ -25,6 +25,7 @@
     </Shell.TitleView>
 
     <Grid VerticalOptions="Start" HorizontalOptions="StartAndExpand">
+        <ActivityIndicator x:Name="Loader" IsRunning="false" ZIndex="10" Color="AliceBlue"/>
         <StackLayout Orientation="Vertical">
             <SwipeView>
                 <SwipeView.GestureRecognizers>

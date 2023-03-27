@@ -28,7 +28,6 @@ public partial class MainPage : ContentPage
 
         Uri uri = null;
 
-
         if (apod.LastUri == null)
         {
             uri = await apod.GetApodUri();
@@ -40,28 +39,30 @@ public partial class MainPage : ContentPage
 
         if (App.PreviousPage == "ChooseStartDate")
         {
+            Loader.IsRunning = true;
             uri = await apod.GetApodUriByDate(App.StartDate);
         }
 
         if (App.PreviousPage == "SetRangeDate")
         {
+            Loader.IsRunning = true;
             await apod.GetImagesByDateRange(App.DateRangeStartDate, App.DateRangeEndDate);
             uri = apod.ReturnCurrentImageInArrayUri();
         }
 
         if (App.PreviousPage == "PickRandomNumber")
         {
+            Loader.IsRunning = true;
             await apod.GetNumberOfImages(App.NumberOfRandomImages);
             uri = apod.ReturnCurrentImageInArrayUri();
         }
         if (App.PreviousPage == "SlideshowPage")
         {
-            Debug.WriteLine(App.ThePageBefore);
-            Debug.WriteLine(App.SlideShowDelay);
             StartTimer(App.SlideShowDelay);
         }
         if (uri != null)
         {
+            Loader.IsRunning = false;
             TheImage.Source = uri;
             ImageDescription = apod.Information;
             Title = apod.Title;
@@ -90,13 +91,11 @@ public partial class MainPage : ContentPage
     {
         if (App.PreviousPage == "ChooseStartDate" || App.PreviousPage == "MainPage" || App.ThePageBefore == "MainPage" || App.ThePageBefore == "ChooseStartDate")
         {
-        Debug.WriteLine("Handle Swipe");
             var prevUri = await apod.GetPreviousUri();
             TheImage.Source = prevUri;
         }
         if (App.PreviousPage == "SetRangeDate" || App.PreviousPage == "PickRandomNumber" || App.ThePageBefore == "SetRangeDate" || App.ThePageBefore == "PickRandomNumber")
         {
-        Debug.WriteLine("Handle Swipe");
             var prevUri = apod.ReturnNextImageInArrayUri();
             TheImage.Source = prevUri;
         }
