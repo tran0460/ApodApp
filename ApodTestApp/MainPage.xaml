@@ -27,6 +27,7 @@
     <Grid VerticalOptions="Start" HorizontalOptions="StartAndExpand">
         <ActivityIndicator x:Name="Loader" IsRunning="false" ZIndex="10" Color="AliceBlue"/>
         <StackLayout Orientation="Vertical">
+
             <SwipeView>
                 <SwipeView.GestureRecognizers>
                     <SwipeGestureRecognizer Direction="Left" Swiped="OnSwiped" />
@@ -41,6 +42,13 @@
            SemanticProperties.Description="Random Image!" />
             </SwipeView>
             <Label x:Name="ImageDescriptionLabel" IsVisible="false" HorizontalOptions="CenterAndExpand" />
+            <Button x:Name="shareImage"
+                Clicked="shareImage_Clicked"
+                Text="Share"
+                HeightRequest="30" 
+                WidthRequest="100" 
+                Margin="20"
+                />
         </StackLayout>
     </Grid>
 

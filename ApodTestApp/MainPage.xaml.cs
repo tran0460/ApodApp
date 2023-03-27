@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using Microsoft.Maui.ApplicationModel.DataTransfer;
+using System.Diagnostics;
 
 namespace ApodTestApp;
 
@@ -133,7 +134,7 @@ public partial class MainPage : ContentPage
             handleSwipeLeft();
         };
 
-        timer.Start();
+        timer.Start();  
     }
 
     private void StopTimer() 
@@ -153,5 +154,24 @@ public partial class MainPage : ContentPage
     {
         await Navigation.PushAsync(new SettingsPage());
     }
+
+    private async void shareImage_Clicked(object sender, EventArgs e)
+    {
+        if (TheImage.Source == null) return;
+        IShare share = DependencyService.Get<IShare>();
+        // If platform does not support sharing, return;
+        if (share == null) return;  
+        await ShareUri(TheImage.Source.ToString(), share);
+    }
+
+    public async Task ShareUri(string uri, IShare share)
+    {
+        await share.RequestAsync(new ShareTextRequest
+        {
+            Uri = uri,
+            Title = "Check out this cool apod photo"
+        });
+    }
+
 }
 
