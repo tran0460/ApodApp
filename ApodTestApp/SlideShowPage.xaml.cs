@@ -11,7 +11,7 @@ public partial class SlideShowPage : ContentPage
     private void SlideshowSlider_ValueChanged(object sender, ValueChangedEventArgs e)
     {
 		App.SlideShowDelay = Convert.ToInt32(SlideshowSlider.Value);
-
+        DelayValue.Text = $"{App.SlideShowDelay}";
     }
 
     private async void SlideshowBtn_Clicked(object sender, EventArgs e)

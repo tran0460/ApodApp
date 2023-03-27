@@ -5,19 +5,22 @@
              Title="SlideShowPage">
     <VerticalStackLayout>
         <Label 
-            Text="Slide Show Settings"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+                Text="Slide Show Settings"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" />        
+        <Label 
+                x:Name="DelayValue"
+                Text=""
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" />
         <Slider Maximum="10"
                 Minimum="1"
                 x:Name="SlideshowSlider"
-                ValueChanged="SlideshowSlider_ValueChanged"
-                />
+                ValueChanged="SlideshowSlider_ValueChanged" />
         <Button x:Name="SlideshowBtn"
-                    Clicked="SlideshowBtn_Clicked"
-                    Text="Go"
-                    HeightRequest="30" 
-                    WidthRequest="100"
-                    />
+                Clicked="SlideshowBtn_Clicked"
+                Text="Go"
+                HeightRequest="30" 
+                WidthRequest="100" />
     </VerticalStackLayout>
 </ContentPage>

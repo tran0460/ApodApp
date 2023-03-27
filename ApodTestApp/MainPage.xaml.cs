@@ -69,38 +69,48 @@ public partial class MainPage : ContentPage
         switch(e.Direction)
         {
             case SwipeDirection.Left:
-                if (App.PreviousPage == "ChooseStartDate" || App.PreviousPage == "MainPage")
-                {
-                    var prevUri = await apod.GetPreviousUri();
-                    TheImage.Source = prevUri;
-                }
-                if (App.PreviousPage == "SetRangeDate" || App.PreviousPage == "PickRandomNumber")
-                {
-                    var prevUri = apod.ReturnNextImageInArrayUri();
-                    TheImage.Source = prevUri;
-                }
-                ImageDescription = apod.Information;
-                Title = apod.Date;
-                TheTitle.Text = apod.Date;
-                ImageDescriptionLabel.Text = apod.Information;
+                handleSwipeLeft();
                 break;
             case SwipeDirection.Right:
-                if (App.PreviousPage == "ChooseStartDate" || App.PreviousPage == "MainPage")
-                {
-                    var prevUri = await apod.GetNextUri();
-                    TheImage.Source = prevUri;
-                }
-                else if (App.PreviousPage == "SetRangeDate" || App.PreviousPage == "PickRandomNumber")
-                {
-                    var prevUri = apod.ReturnPreviousImageInArrayUri();
-                    TheImage.Source = prevUri;
-                }
-                ImageDescription = apod.Information;
-                Title = apod.Date;
-                TheTitle.Text = apod.Date;
-                ImageDescriptionLabel.Text = apod.Information;
+                handleSwipeRight();
                 break;
         }
+    }
+
+    private async void handleSwipeLeft()
+    {
+        if (App.PreviousPage == "ChooseStartDate" || App.PreviousPage == "MainPage")
+        {
+            var prevUri = await apod.GetPreviousUri();
+            TheImage.Source = prevUri;
+        }
+        if (App.PreviousPage == "SetRangeDate" || App.PreviousPage == "PickRandomNumber")
+        {
+            var prevUri = apod.ReturnNextImageInArrayUri();
+            TheImage.Source = prevUri;
+        }
+        ImageDescription = apod.Information;
+        Title = apod.Date;
+        TheTitle.Text = apod.Date;
+        ImageDescriptionLabel.Text = apod.Information;
+    }
+
+    private async void handleSwipeRight()
+    {
+        if (App.PreviousPage == "ChooseStartDate" || App.PreviousPage == "MainPage")
+        {
+            var prevUri = await apod.GetNextUri();
+            TheImage.Source = prevUri;
+        }
+        else if (App.PreviousPage == "SetRangeDate" || App.PreviousPage == "PickRandomNumber")
+        {
+            var prevUri = apod.ReturnPreviousImageInArrayUri();
+            TheImage.Source = prevUri;
+        }
+        ImageDescription = apod.Information;
+        Title = apod.Date;
+        TheTitle.Text = apod.Date;
+        ImageDescriptionLabel.Text = apod.Information;
     }
 
     private void StartTimer(int seconds)

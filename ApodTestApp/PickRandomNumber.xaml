@@ -9,20 +9,18 @@
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
         <Label 
-            Text=""
             x:Name="CurrentSliderValue"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
         <Slider Maximum="100"
                 Minimum="1"
                 x:Name="ImagesSlider"
-                ValueChanged="Slider_ValueChanged"
-                />
+                WidthRequest="50"
+                ValueChanged="Slider_ValueChanged" />
         <Button x:Name="ChooseNumberOfImages"
                     Clicked="ChooseNumberOfImages_Clicked"
                     Text="Go"
                     HeightRequest="30" 
-                    WidthRequest="100"
-                    />
+                    WidthRequest="100" />
     </VerticalStackLayout>
 </ContentPage>
