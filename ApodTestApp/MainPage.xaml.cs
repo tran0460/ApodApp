@@ -16,9 +16,6 @@ public partial class MainPage : ContentPage
 	public MainPage()
 	{
 		InitializeComponent();
-
-        apod.GetApodUri(); // TODO - MOVE THIS
-
     }
 
     protected override async void OnNavigatedTo(NavigatedToEventArgs args)
@@ -71,7 +68,7 @@ public partial class MainPage : ContentPage
         }
     }
 
-    private async void OnSwiped(object sender, SwipedEventArgs e)
+    private void OnSwiped(object sender, SwipedEventArgs e)
     {
         switch(e.Direction)
         {
@@ -83,18 +80,19 @@ public partial class MainPage : ContentPage
                 break;
             case SwipeDirection.Down:
                 StopTimer();
+                App.ThePageBefore = "MainPage";
                 break;
         }
     }
 
     private async void handleSwipeLeft()
     {
-        if (App.PreviousPage == "ChooseStartDate" || App.PreviousPage == "MainPage" || App.ThePageBefore == "MainPage" || App.ThePageBefore == "ChooseStartDate")
+        if (App.PreviousPage == "ChooseStartDate" || App.PreviousPage == "MainPage" || (App.PreviousPage == "SlideshowPage" && App.ThePageBefore == "MainPage") || (App.PreviousPage == "SlideshowPage" && App.ThePageBefore == "ChooseStartDate"))
         {
             var prevUri = await apod.GetPreviousUri();
             TheImage.Source = prevUri;
         }
-        if (App.PreviousPage == "SetRangeDate" || App.PreviousPage == "PickRandomNumber" || App.ThePageBefore == "SetRangeDate" || App.ThePageBefore == "PickRandomNumber")
+        if (App.PreviousPage == "SetRangeDate" || App.PreviousPage == "PickRandomNumber" || (App.PreviousPage == "SlideshowPage" && App.ThePageBefore == "SetRangeDate") || (App.PreviousPage == "SlideshowPage" && App.ThePageBefore == "PickRandomNumber"))
         {
             var prevUri = apod.ReturnNextImageInArrayUri();
             TheImage.Source = prevUri;
@@ -108,13 +106,13 @@ public partial class MainPage : ContentPage
     private async void handleSwipeRight()
     {
         // Additional conditions for slideshow handling
-        if (App.PreviousPage == "ChooseStartDate" || App.PreviousPage == "MainPage" )
+        if (App.PreviousPage == "ChooseStartDate" || App.PreviousPage == "MainPage" || (App.PreviousPage == "SlideshowPage" && App.ThePageBefore == "MainPage") || (App.PreviousPage == "SlideshowPage" && App.ThePageBefore == "ChooseStartDate"))
         {
             var prevUri = await apod.GetNextUri();
             TheImage.Source = prevUri;
         }
         // Additional conditions for slideshow handling
-        else if (App.PreviousPage == "SetRangeDate" || App.PreviousPage == "PickRandomNumber" )
+        else if (App.PreviousPage == "SetRangeDate" || App.PreviousPage == "PickRandomNumber" || (App.PreviousPage == "SlideshowPage" && App.ThePageBefore == "SetRangeDate") || (App.PreviousPage == "SlideshowPage" && App.ThePageBefore == "PickRandomNumber"))
         {
             var prevUri = apod.ReturnPreviousImageInArrayUri();
             TheImage.Source = prevUri;
@@ -130,7 +128,7 @@ public partial class MainPage : ContentPage
         timer = Dispatcher.CreateTimer();
         timer.Interval = TimeSpan.FromSeconds(seconds);
 
-        timer.Tick += async (_, _) =>
+        timer.Tick += (_, _) =>
         {
             handleSwipeLeft();
         };

@@ -4,7 +4,6 @@ namespace ApodTestApp;
 
 public partial class ChooseStartDate : ContentPage
 {
-    private DateTime startDate;
 	public ChooseStartDate()
 	{
         InitializeComponent();

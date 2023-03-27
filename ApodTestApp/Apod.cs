@@ -176,13 +176,17 @@ namespace ApodTestApp
         public Uri ReturnNextImageInArrayUri()
         {
             // if last item, go to the first
-            if (currentIndex == imagesArray.Length - 1)
+            if (currentIndex == imagesArray.Length - 1 && App.LoopAtEnd == true)
             {
                 currentIndex = 0;
                 currentApodData = imagesArray[currentIndex];
             }
-            else
+            else if (currentIndex == imagesArray.Length - 1 && App.LoopAtEnd == false)
             {
+                Debug.WriteLine("Condition met");
+                currentApodData = imagesArray[currentIndex];
+            }
+            else {
                 currentIndex++;
                 currentApodData = imagesArray[currentIndex];
             }
@@ -193,13 +197,16 @@ namespace ApodTestApp
         public Uri ReturnPreviousImageInArrayUri()
         {
             // if first item, go to the last
-            if (currentIndex == 0)
+            if (currentIndex == 0 && App.LoopAtEnd == true)
             {
                 currentIndex = imagesArray.Length - 1;
                 currentApodData = imagesArray[currentIndex];
             }
-            else
+            else if (currentIndex == 0 && App.LoopAtEnd == false)
             {
+                currentApodData = imagesArray[currentIndex];
+            }
+            else {
                 currentIndex--;
                 currentApodData = imagesArray[currentIndex];
             }
