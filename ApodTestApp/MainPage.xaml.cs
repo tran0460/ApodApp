@@ -66,6 +66,7 @@ public partial class MainPage : ContentPage
             Title = apod.Title;
             TheTitle.Text = apod.Date;
             ImageDescriptionLabel.Text = apod.Information;
+            SemanticProperties.SetDescription(TheImage, apod.Information);
         }
     }
 
@@ -102,6 +103,7 @@ public partial class MainPage : ContentPage
         Title = apod.Date;
         TheTitle.Text = apod.Date;
         ImageDescriptionLabel.Text = apod.Information;
+        SemanticProperties.SetDescription(TheImage, apod.Information);
     }
 
     private async void handleSwipeRight()
@@ -122,6 +124,7 @@ public partial class MainPage : ContentPage
         Title = apod.Date;
         TheTitle.Text = apod.Date;
         ImageDescriptionLabel.Text = apod.Information;
+        SemanticProperties.SetDescription(TheImage, apod.Information);
     }
 
     private void StartTimer(int seconds)
@@ -160,6 +163,7 @@ public partial class MainPage : ContentPage
         if (TheImage.Source == null) return;
         IShare share = DependencyService.Get<IShare>();
         // If platform does not support sharing, return;
+        Debug.WriteLine(share);
         if (share == null) return;  
         await ShareUri(TheImage.Source.ToString(), share);
     }

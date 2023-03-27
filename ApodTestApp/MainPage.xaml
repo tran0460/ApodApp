@@ -45,7 +45,7 @@
             <Button x:Name="shareImage"
                 Clicked="shareImage_Clicked"
                 Text="Share"
-                HeightRequest="30" 
+                HeightRequest="50" 
                 WidthRequest="100" 
                 Margin="20"
                 />
