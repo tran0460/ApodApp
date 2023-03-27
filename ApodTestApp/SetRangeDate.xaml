@@ -12,6 +12,7 @@
             Text="Choose a start date"
             VerticalOptions="Center" 
             HorizontalOptions="Center" 
+            Margin="20"
             />
         <DatePicker 
             x:Name="StartDatePicker"
@@ -24,6 +25,7 @@
             Text="Choose an end date"
             VerticalOptions="Center" 
             HorizontalOptions="Center" 
+            Margin="20"
             />
         <DatePicker 
             x:Name="EndDatePicker"
@@ -31,12 +33,14 @@
             MinimumDate="01/01/1995" 
             WidthRequest="150"
             HorizontalOptions="Center"
-            Margin="20"
             />
         <Button x:Name="ChooseDateRange"
             Clicked="ChooseDateRange_Clicked"
             Text="Go"
             HeightRequest="30" 
-            WidthRequest="100" />
+            WidthRequest="100"
+            Margin="20"
+                
+                />
     </VerticalStackLayout>
 </ContentPage>

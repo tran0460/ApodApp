@@ -12,15 +12,20 @@
                 x:Name="DelayValue"
                 Text=""
                 VerticalOptions="Center" 
-                HorizontalOptions="Center" />
+                HorizontalOptions="Center" 
+                Margin="20"
+            />
         <Slider Maximum="10"
                 Minimum="1"
                 x:Name="SlideshowSlider"
+                WidthRequest="300"
                 ValueChanged="SlideshowSlider_ValueChanged" />
         <Button x:Name="SlideshowBtn"
                 Clicked="SlideshowBtn_Clicked"
                 Text="Go"
                 HeightRequest="30" 
-                WidthRequest="100" />
+                WidthRequest="100" 
+                Margin="20"
+                />
     </VerticalStackLayout>
 </ContentPage>
