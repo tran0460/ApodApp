@@ -26,32 +26,31 @@
 
     <Grid VerticalOptions="Start" HorizontalOptions="StartAndExpand">
         <ActivityIndicator x:Name="Loader" IsRunning="false" ZIndex="10" Color="AliceBlue"/>
-        <StackLayout Orientation="Vertical">
+        <ScrollView>
+            
+        <StackLayout Orientation="Vertical" >
 
             <SwipeView>
                 <SwipeView.GestureRecognizers>
                     <SwipeGestureRecognizer Direction="Left" Swiped="OnSwiped" />
                     <SwipeGestureRecognizer Direction="Right" Swiped="OnSwiped" />
                     <SwipeGestureRecognizer Direction="Down" Swiped="OnSwiped" />
-                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" 
-                                  NumberOfTapsRequired="2"
-                                  />
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" NumberOfTapsRequired="2" />
                 </SwipeView.GestureRecognizers>
 
-                <Image x:Name="TheImage" HeightRequest="400" WidthRequest="400"
-           SemanticProperties.Description="Random Image!" />
+                <Image x:Name="TheImage" HeightRequest="400" WidthRequest="400" SemanticProperties.Description="Random Image!" />
             </SwipeView>
-           
-                 <Label x:Name="ImageDescriptionLabel" BackgroundColor="Beige"  IsVisible="false" Padding="10" HorizontalOptions="CenterAndExpand" />
            
             <Button x:Name="shareImage"
                 Clicked="shareImage_Clicked"
                 Text="Share"
                 HeightRequest="50" 
                 WidthRequest="100" 
-                Margin="20"
+                Margin="10"
                 />
+            <Label x:Name="ImageDescriptionLabel" BackgroundColor="Beige"  IsVisible="false" Padding="10" HorizontalOptions="CenterAndExpand" />
         </StackLayout>
+        </ScrollView>
     </Grid>
 
 </ContentPage>

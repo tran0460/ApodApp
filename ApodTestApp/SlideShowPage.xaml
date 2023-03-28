@@ -5,7 +5,7 @@
              Title="SlideShowPage">
     <VerticalStackLayout WidthRequest="300" VerticalOptions="Start" HorizontalOptions="Center" Padding="20" BackgroundColor="Beige">
         <Label 
-                Text="Slide Show Settings"
+                Text="Choose a delay for your slideshow"
                 VerticalOptions="Center" 
                 HorizontalOptions="Center" />        
         <Label 
