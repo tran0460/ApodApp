@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ApodTestApp.PickRandomNumber"
              Title="PickRandomNumber">
-    <VerticalStackLayout>
+    <VerticalStackLayout WidthRequest="300" VerticalOptions="Start" HorizontalOptions="Center" Padding="20" BackgroundColor="Beige">
         <Label 
             Text="Choose between 1 and 100 images to display"
             VerticalOptions="Center" 
@@ -12,12 +12,13 @@
             x:Name="CurrentSliderValue"
             VerticalOptions="Center" 
             HorizontalOptions="Center" 
+            FontSize="Large"
             Margin="20"
             />
         <Slider Maximum="100"
                 Minimum="1"
                 x:Name="ImagesSlider"
-                WidthRequest="300"
+                WidthRequest="250"
                 VerticalOptions="Center"
                 ValueChanged="Slider_ValueChanged" />
         <Button x:Name="ChooseNumberOfImages"
