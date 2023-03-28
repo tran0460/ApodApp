@@ -3,9 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ApodTestApp.SetRangeDate"
              Title="SetRangeDate">
-    <VerticalStackLayout>
+    <VerticalStackLayout WidthRequest="300" VerticalOptions="Start" HorizontalOptions="Center" Padding="20" BackgroundColor="Beige">
         <Label 
             Text="Choose a date range for your images"
+            FontAttributes="Bold"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
         <Label 
@@ -13,6 +14,7 @@
             VerticalOptions="Center" 
             HorizontalOptions="Center" 
             Margin="20"
+            FontAttributes="Bold"
             />
         <DatePicker 
             x:Name="StartDatePicker"
@@ -20,12 +22,15 @@
             MinimumDate="01/01/1995" 
             WidthRequest="150"
             HorizontalOptions="Center"
+             BackgroundColor="#F0F0F0"
+             FontFamily="Arial" FontAttributes="Bold" 
             />
         <Label 
             Text="Choose an end date"
             VerticalOptions="Center" 
             HorizontalOptions="Center" 
             Margin="20"
+            FontAttributes="Bold"
             />
         <DatePicker 
             x:Name="EndDatePicker"
@@ -33,6 +38,8 @@
             MinimumDate="01/01/1995" 
             WidthRequest="150"
             HorizontalOptions="Center"
+             BackgroundColor="#F0F0F0"
+             FontFamily="Arial" FontAttributes="Bold" 
             />
         <Button x:Name="ChooseDateRange"
             Clicked="ChooseDateRange_Clicked"

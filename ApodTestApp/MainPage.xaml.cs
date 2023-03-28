@@ -8,9 +8,7 @@ public partial class MainPage : ContentPage
 
 	public string ImageDescription { get; set; } = string.Empty;
 
-    private bool IsDescriptionShow = false;
-
-
+    
     IDispatcherTimer timer = null;
 
 	public MainPage()
@@ -148,7 +146,7 @@ public partial class MainPage : ContentPage
     {
        
         ImageDescriptionLabel.IsVisible = !ImageDescriptionLabel.IsVisible;
-        IsDescriptionShow = !IsDescriptionShow;
+        
                
     }
 

@@ -3,26 +3,33 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ApodTestApp.ChooseStartDate"
              Title="ChooseStartDate">
+   
+        <VerticalStackLayout WidthRequest="300" VerticalOptions="Start" HorizontalOptions="Center" Padding="20" BackgroundColor="Beige">
 
-    <VerticalStackLayout>
-        <Label 
+           <Label 
             Text="Choose a start date for your images!"
             VerticalOptions="Center" 
+               FontAttributes="Bold"
             HorizontalOptions="Center" />
         
-        <DatePicker 
-            x:Name="StartDatePicker"
-            MinimumDate="01/01/1995"
-            DateSelected="DatePicker_DateSelected"
-            HorizontalOptions="Center"
-            Margin="20"
-                    />
-        
-        <Button x:Name="ChooseStartDateBtn"
-                    Clicked="ChooseStartDateBtn_Clicked"
-                    Text="Go"
-                    HeightRequest="30" 
-                    WidthRequest="100"
-                    />
+            <DatePicker 
+                x:Name="StartDatePicker"
+                MinimumDate="01/01/1995"
+                DateSelected="DatePicker_DateSelected"
+                HorizontalOptions="Center"
+                
+                BackgroundColor="#F0F0F0"
+                FontFamily="Arial" FontAttributes="Bold" 
+                
+                
+                Margin="20"/>
+
+            <Button x:Name="ChooseStartDateBtn"
+                        Clicked="ChooseStartDateBtn_Clicked"
+                        Text="Go"
+                        HeightRequest="30" 
+                        WidthRequest="100"/>    
+       
     </VerticalStackLayout>
+   
 </ContentPage>

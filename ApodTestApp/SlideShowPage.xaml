@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ApodTestApp.SlideShowPage"
              Title="SlideShowPage">
-    <VerticalStackLayout>
+    <VerticalStackLayout WidthRequest="300" VerticalOptions="Start" HorizontalOptions="Center" Padding="20" BackgroundColor="Beige">
         <Label 
                 Text="Slide Show Settings"
                 VerticalOptions="Center" 
@@ -11,6 +11,7 @@
         <Label 
                 x:Name="DelayValue"
                 Text=""
+                FontSize="Large"
                 VerticalOptions="Center" 
                 HorizontalOptions="Center" 
                 Margin="20"
@@ -18,7 +19,7 @@
         <Slider Maximum="10"
                 Minimum="1"
                 x:Name="SlideshowSlider"
-                WidthRequest="300"
+                WidthRequest="250"
                 ValueChanged="SlideshowSlider_ValueChanged" />
         <Button x:Name="SlideshowBtn"
                 Clicked="SlideshowBtn_Clicked"

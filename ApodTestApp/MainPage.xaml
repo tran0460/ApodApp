@@ -41,7 +41,9 @@
                 <Image x:Name="TheImage" HeightRequest="400" WidthRequest="400"
            SemanticProperties.Description="Random Image!" />
             </SwipeView>
-            <Label x:Name="ImageDescriptionLabel" IsVisible="false" HorizontalOptions="CenterAndExpand" />
+           
+                 <Label x:Name="ImageDescriptionLabel" BackgroundColor="Beige"  IsVisible="false" Padding="10" HorizontalOptions="CenterAndExpand" />
+           
             <Button x:Name="shareImage"
                 Clicked="shareImage_Clicked"
                 Text="Share"
